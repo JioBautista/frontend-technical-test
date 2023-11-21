@@ -63,10 +63,5 @@
 				]
 			}
 		]
-	},
-	{
-		"id": "EVT_3",
-		"name": "Empty Event that shouldn't render",
-		"markets": []
 	}
 ]
