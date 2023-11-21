@@ -1,5 +1,6 @@
 import React from 'react'
 import data from "./data/data.json"
+import EventName from './EventName'
 
 function Event() {
   return (
@@ -7,9 +8,7 @@ function Event() {
         {data.map(items => {
             return (
                 <>
-                <div>
-                    <h1>{items.name}</h1>
-                </div>
+                <EventName>{items.name}</EventName>
                 </>
             )
         })}
