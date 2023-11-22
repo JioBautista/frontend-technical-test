@@ -1,8 +1,13 @@
 // Wrapper
 .wrapper {
     display: flex;
-    justify-content: flex-end;
-    border: 1px solid black;
+    justify-content: space-between;
+    align-items: center;
     padding-block: 0.5rem;
     padding-inline: 1rem;
+    margin-bottom: 1rem;
+
+    img {
+        width: 30px;
+    }
 }

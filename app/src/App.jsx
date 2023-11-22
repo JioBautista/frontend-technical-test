@@ -10,30 +10,34 @@ function App() {
       {data.map((items) => {
         return (
           // PARENT CONTAINER EVENT NAME
-          <div>
-            <div>
+          <div className={styles.event}>
+            <div className={styles.title}>
               <h1>{items.name}</h1>
             </div>
 
             {items.markets.map((items) => {
               return (
                 <>
-                {/* CHILD CONTAINER MARKET NAME */}
-                  <div>
+                  {/* CHILD CONTAINER MARKET NAME */}
+                  <div className={styles.market}>
+
                     <h2>{items.name}</h2>
 
-                    {items.selections.map((items) => {
-                      return (
-                        <>
-                        {/* GRANDCHILD CONTAINER SELECTION COMPONENT */}
-                          <div>
+                    {/* SELECTION DIV */}
+                    <div className={styles.selection}>
+
+                      {items.selections.map((items) => {
+                        return (
+                          <>
                             <button>
                               {items.name} {items.price}
                             </button>
-                          </div>
-                        </>
-                      );
-                    })}
+                          </>
+                        );
+                      })}
+
+                    </div>
+
                   </div>
                 </>
               );
