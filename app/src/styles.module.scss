@@ -37,3 +37,14 @@
         }
     }
 }
+// Submit button
+.submitbtn {
+    cursor: pointer;
+    padding: 0.5rem 2rem;
+    border-radius: 0.25rem;
+    border: none;
+    &:hover {
+        background-color: green;
+        color: white;
+    }
+}

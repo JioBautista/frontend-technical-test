@@ -4,6 +4,11 @@ import styles from "./styles.module.scss";
 import NavBar from "./navbar/NavBar";
 
 function App() {
+  const [selectValue, setSelectValue] = React.useState("");
+
+  const handleClick = (e) => setSelectValue(e.target.value);
+
+  console.log(selectValue);
   return (
     <div className={styles.wrapper}>
       <NavBar />
@@ -20,24 +25,23 @@ function App() {
                 <>
                   {/* CHILD CONTAINER MARKET NAME */}
                   <div className={styles.market}>
-
                     <h2>{items.name}</h2>
 
                     {/* SELECTION DIV */}
                     <div className={styles.selection}>
-
                       {items.selections.map((items) => {
                         return (
                           <>
-                            <button>
+                            <button
+                              value={items.price}
+                              onClick={() => handleClick()}
+                            >
                               {items.name} {items.price}
                             </button>
                           </>
                         );
                       })}
-
                     </div>
-
                   </div>
                 </>
               );
@@ -45,6 +49,10 @@ function App() {
           </div>
         );
       })}
+      <button className={styles.submitbtn}>Submit</button>
+      <div>
+        <h1>Your selection</h1>
+      </div>
     </div>
   );
 }
