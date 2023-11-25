@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import data from "../data/data.json";
 
-const initialState = [];
+const initialState = []
 
 const selectionSlice = createSlice({
   name: "selection",
@@ -12,7 +12,8 @@ const selectionSlice = createSlice({
     },
   },
 });
+console.log(selectionSlice);
 
-export const { selectionAdded } = selectionSlice.actions;
+export const { selectionAdded, decreaseSelection } = selectionSlice.actions;
 
 export default selectionSlice.reducer;

@@ -1,14 +1,20 @@
 import React from "react";
 import styles from "./navbar.module.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { decreaseSelection } from "../features/selectionSlice";
 
 function NavBar() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const dispatch = useDispatch();
 
-  const selections = useSelector((state) => state.selection);
+  const selections = useSelector((store) => store.selection);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleClick = (e) => {
+    dispatch(decreaseSelection(e.target.value));
   };
 
   return (
@@ -23,8 +29,8 @@ function NavBar() {
             onClick={() => toggleMenu()}
           />
           <h2>Your Selections</h2>
-          {selections.map(items => (
-            <p>{items}</p>
+          {selections.map((items) => (
+            <button>{items}</button>
           ))}
         </div>
       )}

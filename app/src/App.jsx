@@ -17,7 +17,7 @@ function App() {
       {data.map((items) => {
         return (
           // PARENT CONTAINER EVENT NAME
-          <div className={styles.event}>
+          <div className={styles.event} key={items.id}>
             <div className={styles.title}>
               <h1>{items.name}</h1>
             </div>
@@ -26,17 +26,19 @@ function App() {
               return (
                 <>
                   {/* CHILD CONTAINER MARKET NAME */}
-                  <div className={styles.market}>
+                  <div className={styles.market} key={items.id}>
                     <h2>{items.name}</h2>
 
                     {/* SELECTION DIV */}
-                    <div className={styles.selection}>
+                    <div className={styles.selection}
+                    >
                       {items.selections.map((items) => {
                         return (
                           <>
                             <button
-                              value={`${items.price} ${items.name}`}
+                              value={`${items.name} ${items.price}`}
                               onClick={(e) => handleClick(e)}
+                              key={items.id}
                             >
                               {items.name} {items.price}
                             </button>
