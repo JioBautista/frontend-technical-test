@@ -1,5 +1,6 @@
 // Wrapper
 .wrapper {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,5 +10,21 @@
 
     img {
         width: 30px;
+    }
+}
+.selection {
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 50vh;
+    position: absolute;
+    background-color: darkgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+
+    img {
+        align-self: flex-end;
     }
 }

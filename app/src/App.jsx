@@ -2,13 +2,15 @@ import React from "react";
 import data from "./data/data.json";
 import styles from "./styles.module.scss";
 import NavBar from "./navbar/NavBar";
+import { useDispatch, useSelector } from "react-redux";
+import { selectionAdded } from "./features/selectionSlice";
 
 function App() {
-  const [selectValue, setSelectValue] = React.useState("");
+  const dispatch = useDispatch();
 
-  const handleClick = (e) => setSelectValue(e.target.value);
-
-  console.log(selectValue);
+  const handleClick = (e) => {
+    dispatch(selectionAdded(e.target.value));
+  };
   return (
     <div className={styles.wrapper}>
       <NavBar />
@@ -33,8 +35,8 @@ function App() {
                         return (
                           <>
                             <button
-                              value={items.price}
-                              onClick={() => handleClick()}
+                              value={`${items.price} ${items.name}`}
+                              onClick={(e) => handleClick(e)}
                             >
                               {items.name} {items.price}
                             </button>
@@ -49,10 +51,6 @@ function App() {
           </div>
         );
       })}
-      <button className={styles.submitbtn}>Submit</button>
-      <div>
-        <h1>Your selection</h1>
-      </div>
     </div>
   );
 }
