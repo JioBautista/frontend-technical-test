@@ -12,7 +12,6 @@ const selectionSlice = createSlice({
     },
   },
 });
-console.log(selectionSlice);
 
 export const { selectionAdded, decreaseSelection } = selectionSlice.actions;
 
