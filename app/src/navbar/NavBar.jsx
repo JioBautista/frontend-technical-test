@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./navbar.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { decreaseSelection } from "../features/selectionSlice";
 
 function NavBar() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -11,10 +10,6 @@ function NavBar() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-  };
-
-  const handleClick = (e) => {
-    dispatch(decreaseSelection(e.target.value));
   };
 
   return (
