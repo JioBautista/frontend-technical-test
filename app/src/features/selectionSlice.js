@@ -9,7 +9,6 @@ const selectionSlice = createSlice({
   reducers: {
     selectionAdded(state, action) {
       state.push({
-        id: action.payload.id,
         name: action.payload.name,
         price: action.payload.price,
       });

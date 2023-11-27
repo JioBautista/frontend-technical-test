@@ -1,11 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { selectionAdded } from "../features/selectionSlice";
 
 function Content() {
   const data = useSelector((store) => store.selection);
+  const dispatch = useDispatch();
+
+  const handleClick = (name, price) => {
+    dispatch(selectionAdded({ name, price }));
+  };
 
   const renderEvent = data.map((item) => (
-    
     <div key={item.id}>
       <h1>{item.name}</h1>
       {item.markets.map((item) => (
