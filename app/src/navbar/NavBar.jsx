@@ -4,10 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 function NavBar() {
   const [isOpen, setIsOpen] = React.useState(false);
-  const dispatch = useDispatch();
-
-  const selections = useSelector((store) => store.selection);
-
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -24,9 +20,6 @@ function NavBar() {
             onClick={() => toggleMenu()}
           />
           <h2>Your Selections</h2>
-          {selections.map((items) => (
-            <button>{items}</button>
-          ))}
         </div>
       )}
     </div>

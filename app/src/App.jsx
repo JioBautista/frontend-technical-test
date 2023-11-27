@@ -1,58 +1,14 @@
 import React from "react";
-import data from "./data/data.json";
 import styles from "./styles.module.scss";
 import NavBar from "./navbar/NavBar";
+import Content from "./component/Content";
 import { useDispatch, useSelector } from "react-redux";
-import { selectionAdded } from "./features/selectionSlice";
 
 function App() {
-  const dispatch = useDispatch();
-
-  const handleClick = (e) => {
-    dispatch(selectionAdded(e.target.value));
-  };
   return (
     <div className={styles.wrapper}>
       <NavBar />
-      {data.map((items) => {
-        return (
-          // PARENT CONTAINER EVENT NAME
-          <div className={styles.event} key={items.id}>
-            <div className={styles.title}>
-              <h1>{items.name}</h1>
-            </div>
-
-            {items.markets.map((items) => {
-              return (
-                <>
-                  {/* CHILD CONTAINER MARKET NAME */}
-                  <div className={styles.market} key={items.id}>
-                    <h2>{items.name}</h2>
-
-                    {/* SELECTION DIV */}
-                    <div className={styles.selection}
-                    >
-                      {items.selections.map((items) => {
-                        return (
-                          <>
-                            <button
-                              value={`${items.name} ${items.price}`}
-                              onClick={(e) => handleClick(e)}
-                              key={items.id}
-                            >
-                              {items.name} {items.price}
-                            </button>
-                          </>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </>
-              );
-            })}
-          </div>
-        );
-      })}
+      <Content />
     </div>
   );
 }

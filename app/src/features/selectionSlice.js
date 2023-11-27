@@ -1,18 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 import data from "../data/data.json";
 
-const initialState = []
+const initialState = data;
 
 const selectionSlice = createSlice({
-  name: "selection",
+  name: "select",
   initialState,
   reducers: {
     selectionAdded(state, action) {
-      state.push(action.payload);
+      state.push({
+        id: action.payload.id,
+        name: action.payload.name,
+        price: action.payload.price,
+      });
     },
   },
 });
 
-export const { selectionAdded, decreaseSelection } = selectionSlice.actions;
+export const { selectionAdded } = selectionSlice.actions;
 
 export default selectionSlice.reducer;
