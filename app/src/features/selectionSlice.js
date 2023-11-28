@@ -8,14 +8,12 @@ const selectionSlice = createSlice({
   initialState,
   reducers: {
     selectionAdded(state, action) {
-      state.push({
-        name: action.payload.name,
-        price: action.payload.price,
-      });
+      state.push(action.payload);
     },
   },
 });
 
+console.log(initialState);
 export const { selectionAdded } = selectionSlice.actions;
 
 export default selectionSlice.reducer;
