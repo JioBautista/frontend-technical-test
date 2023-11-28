@@ -1,14 +1,17 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import data from "../data/data.json";
 
-const initialState = data;
+const initialState = {
+  data: data,
+  amount: [],
+};
 
 const selectionSlice = createSlice({
   name: "select",
   initialState,
   reducers: {
     selectionAdded(state, action) {
-      state.push(action.payload);
+      state.amount.push(action.payload);
     },
   },
 });

@@ -1,16 +1,13 @@
 import React from "react";
 import styles from "../styles.module.scss";
+import EventMarket from "./EventMarket";
 import { useSelector, useDispatch } from "react-redux";
 import { selectionAdded } from "../features/selectionSlice";
 
 function Content() {
-  const data = useSelector((store) => store.selection);
-  const dispatch = useDispatch();
+  const { data } = useSelector((store) => store.selection);
 
-  const handleClick = (e) => {
-    dispatch(selectionAdded(e.target.value));
-  };
-
+  console.log(data);
   return (
     <div>
       {data &&
@@ -18,25 +15,7 @@ function Content() {
           <>
             <div>
               <h1>{item.name}</h1>
-              {item.markets.map((item) => (
-                <>
-                  <div>
-                    <h2>{item.name}</h2>
-                    <div className={styles.selection}>
-                      {item.selections.map((item) => (
-                        <>
-                          <button
-                            value={`${item.price} ${item.name}`}
-                            onClick={(e) => handleClick(e)}
-                          >
-                            {item.name} {item.price}
-                          </button>
-                        </>
-                      ))}
-                    </div>
-                  </div>
-                </>
-              ))}
+              <EventMarket market={item.markets} />
             </div>
           </>
         ))}
