@@ -7,7 +7,6 @@ import { selectionAdded } from "../features/selectionSlice";
 function Content() {
   const { data } = useSelector((store) => store.selection);
 
-  console.log(data);
   return (
     <div>
       {data &&

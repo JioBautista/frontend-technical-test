@@ -19,12 +19,12 @@ const selectionSlice = createSlice({
     },
     selectionRemoved(state, action) {
       const selectionID = action.payload;
-      state.data = state.data.filter((item) => item.id !== selectionID);
+      state.amount = state.amount.filter((item) => item.id !== selectionID);
     },
   },
 });
 
-console.log(initialState);
-export const { selectionAdded, selectionRemoved } = selectionSlice.actions;
+export const { selectionAdded, selectionRemoved, changeBetAmount } =
+  selectionSlice.actions;
 
 export default selectionSlice.reducer;

@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "./navbar.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { selectionRemoved } from "../features/selectionSlice";
+import { selectionRemoved, changeBetAmount } from "../features/selectionSlice";
 
 function NavBar() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [betAmount, setBetAmount] = React.useState("");
   const { amount } = useSelector((store) => store.selection);
   const dispatch = useDispatch();
 
@@ -12,7 +13,11 @@ function NavBar() {
     setIsOpen(!isOpen);
   };
 
-  console.log(amount);
+  const handleChange = (e) => {
+    setBetAmount(e.target.value);
+  };
+
+  console.log(betAmount);
   return (
     <div className={styles.wrapper}>
       <h2>Sports Bet App</h2>
@@ -28,12 +33,18 @@ function NavBar() {
           {amount.map((item) => (
             <>
               <div className={styles.selected}>
-                <p>
+                <h3>
                   {item.name} {item.value}
-                </p>
-                <button onClick={() => dispatch(selectionRemoved(item.id))}>
-                  Remove Selection
-                </button>
+                </h3>
+                <div className={styles.options}>
+                  <button onClick={() => dispatch(selectionRemoved(item.id))}>
+                    Remove
+                  </button>
+                  <input placeholder="Bet Amount" onChange={handleChange} />
+                  <button onClick={() => dispatch(changeBetAmount(betAmount))}>
+                    Change
+                  </button>
+                </div>
               </div>
             </>
           ))}
