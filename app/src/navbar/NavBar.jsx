@@ -1,15 +1,18 @@
 import React from "react";
 import styles from "./navbar.module.scss";
 import { useSelector, useDispatch } from "react-redux";
+import { selectionRemoved } from "../features/selectionSlice";
 
 function NavBar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const { amount } = useSelector((store) => store.selection);
+  const dispatch = useDispatch();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  console.log(amount);
   return (
     <div className={styles.wrapper}>
       <h2>Sports Bet App</h2>
@@ -23,7 +26,16 @@ function NavBar() {
           />
           <h2>Your Selections</h2>
           {amount.map((item) => (
-            <p>{item}</p>
+            <>
+              <div className={styles.selected}>
+                <p>
+                  {item.name} {item.value}
+                </p>
+                <button onClick={() => dispatch(selectionRemoved(item.id))}>
+                  Remove Selection
+                </button>
+              </div>
+            </>
           ))}
         </div>
       )}
