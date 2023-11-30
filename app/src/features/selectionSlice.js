@@ -4,7 +4,6 @@ import data from "../data/data.json";
 const initialState = {
   data: data,
   amount: [],
-  quantity: 0,
 };
 
 const selectionSlice = createSlice({
@@ -20,14 +19,19 @@ const selectionSlice = createSlice({
     },
     selectionRemoved(state, action) {
       const selectionID = action.payload;
-      state.amount = state.amount.filter((item) => item.id !== selectionID);
+      const stateIndex = state.amount.findIndex(
+        (item) => item.id === selectionID
+      );
+      state.amount.splice(stateIndex, 1);
     },
     addValue(state, action) {
       const selectionID = action.payload;
-      state.amount.find(function (item) {
-        return item.id === selectionID;
-      });
-      console.log(selectionID);
+      const stateIndex = state.amount.findIndex(
+        (item) => item.id === selectionID
+      );
+      state.amount[stateIndex].value =
+        state.amount[stateIndex].value + state.amount[stateIndex].value;
+      console.log(stateIndex);
     },
   },
 });
