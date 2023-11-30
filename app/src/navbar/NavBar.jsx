@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./navbar.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { selectionRemoved, changeBetAmount } from "../features/selectionSlice";
+import { selectionRemoved, addValue } from "../features/selectionSlice";
 
 function NavBar() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -40,10 +40,10 @@ function NavBar() {
                   <button onClick={() => dispatch(selectionRemoved(item.id))}>
                     Remove
                   </button>
-                  <input placeholder="Bet Amount" onChange={handleChange} />
-                  <button onClick={() => dispatch(changeBetAmount(betAmount))}>
-                    Change
+                  <button onClick={() => dispatch(addValue(item.id))}>
+                    Add
                   </button>
+                  <button>Sub</button>
                 </div>
               </div>
             </>
