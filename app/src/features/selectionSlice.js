@@ -1,5 +1,5 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
 import data from "../data/data.json";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
   data: data,
@@ -30,13 +30,19 @@ const selectionSlice = createSlice({
         (item) => item.id === selectionID
       );
       state.amount[stateIndex].value =
-        state.amount[stateIndex].value + state.amount[stateIndex].value;
-      console.log(stateIndex);
+        state.amount[stateIndex].value * 2;
+    },
+    minusValue(state, action) {
+      const selectionID = action.payload;
+      const stateIndex = state.amount.findIndex(
+        (item) => item.id === selectionID
+      );
+      state.amount[stateIndex].value = 0;
     },
   },
 });
 
-export const { selectionAdded, selectionRemoved, addValue } =
+export const { selectionAdded, selectionRemoved, addValue, minusValue } =
   selectionSlice.actions;
 
 export default selectionSlice.reducer;

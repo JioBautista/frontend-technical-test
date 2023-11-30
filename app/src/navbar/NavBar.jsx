@@ -1,7 +1,11 @@
 import React from "react";
 import styles from "./navbar.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { selectionRemoved, addValue } from "../features/selectionSlice";
+import {
+  selectionRemoved,
+  addValue,
+  minusValue,
+} from "../features/selectionSlice";
 
 function NavBar() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -43,7 +47,9 @@ function NavBar() {
                   <button onClick={() => dispatch(addValue(item.id))}>
                     Add
                   </button>
-                  <button>Sub</button>
+                  <button onClick={() => dispatch(minusValue(item.id))}>
+                    Sub
+                  </button>
                 </div>
               </div>
             </>
